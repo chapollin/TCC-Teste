@@ -1,5 +1,15 @@
-CREATE DATABASE IF NOT EXISTS `inadimanager`
+
+CREATE DATABASE IF NOT EXISTS `inadimanager`;
 USE `inadimanager`;
+
+DELIMITER //
+CREATE EVENT `atualizar_status_promissoria` ON SCHEDULE EVERY 1 DAY STARTS '2023-06-01 08:03:36' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+    UPDATE promissoria
+    SET status = 3 
+    WHERE status <> 1 
+    AND DATEDIFF(CURDATE(), data_compra) >= 30;
+END//
+DELIMITER ;
 
 CREATE TABLE IF NOT EXISTS `cliente` (
   `cod` int(11) NOT NULL AUTO_INCREMENT,
@@ -13,7 +23,6 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `telefone` varchar(100) NOT NULL,
   PRIMARY KEY (`cod`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 INSERT INTO `cliente` (`cod`, `nome`, `cpf`, `email`, `endereco`, `numero`, `bairro`, `cidade`, `telefone`) VALUES
 	(6, 'jose', '88888888888', 'jose@jose', 'joseruadzfgjhzdfjhfdgjfgjghdkgfhkhjkljçkjlç', '16', 'mjknkm', 'tiagolandia', '(35) 88888-8888'),
@@ -32,13 +41,15 @@ CREATE TABLE IF NOT EXISTS `promissoria` (
   KEY `fk_status_promissoria` (`status`),
   CONSTRAINT `fk_divida_cliente` FOREIGN KEY (`cod_cliente`) REFERENCES `cliente` (`cod`) ON DELETE CASCADE,
   CONSTRAINT `fk_status_promissoria` FOREIGN KEY (`status`) REFERENCES `status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `promissoria` (`cod`, `descricao`, `valor`, `data_compra`, `data_vencimento`, `cod_cliente`, `status`) VALUES
-	(3, 'lknçnlk', 5345, '2023-06-01', '2023-06-01', 6, 2),
-	(4, '500', 0, '2023-06-01', '2023-07-01', 6, NULL);
-s
+	(3, 'lknçnlk', 5345, '2023-06-01', '2023-07-01', 6, 2),
+	(7, 'carro', 90000, '2023-06-01', '2023-07-01', 7, 1),
+	(8, 'calota', 0, '2023-06-01', '2023-07-01', 7, 3),
+	(9, 'roda', 847651, '2023-06-01', '2023-07-01', 7, 2);
+
 CREATE TABLE IF NOT EXISTS `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) DEFAULT NULL,
@@ -59,7 +70,5 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`cod`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 INSERT INTO `usuario` (`cod`, `nome`, `email`, `senha`) VALUES
 	(1, 'marcos', 'm@m', '6f8f57715090da2632453988d9a1501b');
-

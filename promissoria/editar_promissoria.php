@@ -1,4 +1,3 @@
-
 <?php
 require_once('../valida_session/valida_session.php');
 require_once('../layout/header.php'); 
@@ -62,9 +61,9 @@ $promissoria = buscaPromissoria($cod_promissoria);
                         <input class="form-control" id="cod" name="cod" type="hidden" value="<?= $cod_promissoria ?>">
                     </div>                 
                     <div class="form-group">
-                    <label>Nome do Cliente</label>
-                    <select class="form-control" id="cod_cliente" name="cod_cliente" required>
-                        <option value="-1" disabled>Selecione um cliente</option>
+                        <label>Nome do Cliente</label>
+                        <select class="form-control" id="cod_cliente" name="cod_cliente" required>
+                            <option value="-1" disabled>Selecione um cliente</option>
                             <?php
                             $lista = listaClienteOrdemAlfabetica();
                             foreach ($lista as $linha) {
@@ -78,7 +77,7 @@ $promissoria = buscaPromissoria($cod_promissoria);
                                 }
                             }
                             ?>
-                    </select>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -97,7 +96,15 @@ $promissoria = buscaPromissoria($cod_promissoria);
                     <div class="form-group">
                         <label for="data_vencimento">Data de Vencimento:</label>
                         <input type="date" class="form-control" id="data_vencimento" name="data_vencimento" value="<?= $promissoria['data_vencimento'] ?>" required>
-                    </div>    
+                    </div> 
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select class="form-control" id="status" name="status" required>
+                            <option value="1" <?php if ($promissoria['status'] == 1) echo 'selected'; ?>>Paga</option>
+                            <option value="2" <?php if ($promissoria['status'] == 2) echo 'selected'; ?>>Não Paga</option>
+                            <option value="3" <?php if ($promissoria['status'] == 3) echo 'selected'; ?>>Vencida</option>
+                        </select>
+                    </div>  
                     <div class="card-footer text-muted" id="btn-form">
                         <div class=text-right>
                             <a title="Voltar" href="promissoria.php"><button type="button" class="btn btn-success"><i class="fas fa-arrow-circle-left"></i>&nbsp;</i>Voltar</button></a>
@@ -116,5 +123,3 @@ $promissoria = buscaPromissoria($cod_promissoria);
 <?php
 require_once('../layout/footer.php');
 ?>
-
-

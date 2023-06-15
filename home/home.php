@@ -4,7 +4,12 @@ require_once('../layout/header.php');
 require_once('../layout/sidebar.php');
 require_once ('../bd/bd_generico.php');
 require_once ('../bd/bd_usuario.php');
+require_once ('../bd/bd_promissoria.php'); // Inclua o arquivo bd_promissoria.php
 
+// Obtenha a lista de promissórias não pagas
+$promissoriasNaoPagas = listaPromissoriaNaoPagas();
+$promissoriasPagas =  listaPromissoriaPagas();
+$promissoriasVencidas = listaPromissoriaVencidas();
 
 ?>
 
@@ -24,10 +29,13 @@ require_once ('../bd/bd_usuario.php');
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                            Primissórias Abertas</div>
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Promissórias Não Pagas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-
+                                <?php
+                                // Exiba o número de promissórias não pagas
+                                echo count($promissoriasNaoPagas);
+                                ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -43,11 +51,11 @@ require_once ('../bd/bd_usuario.php');
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Promissórias Vencidas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                               <?php
-                                
+                                echo count($promissoriasPagas);
                             ?>  
                             </div>
                         </div>
@@ -68,7 +76,7 @@ require_once ('../bd/bd_usuario.php');
                             Promissórias Pagas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php
-
+                                echo count($promissoriasVencidas);
                             ?>  
                             </div>
                         </div>
