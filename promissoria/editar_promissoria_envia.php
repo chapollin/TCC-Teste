@@ -2,18 +2,16 @@
 require_once("../valida_session/valida_session.php");
 require_once ("../bd/bd_promissoria.php");
 
-if (isset($_GET["cod"]) && isset($_GET["descricao"]) && isset($_GET["valor"]) && isset($_GET["data_vencimento"]) && isset($_GET["data_compra"]) && isset($_GET["cod_cliente"]) && isset($_GET["status"])) {
+if (isset($_GET["cod"]) && isset($_GET["descricao"]) && isset($_GET["valor"]) && isset($_GET["cod_cliente"]) && isset($_GET["status"])) {
     $codigo = $_GET["cod"];
     $descricao = $_GET["descricao"];
     $valor = $_GET["valor"];
-    $data_vencimento = $_GET["data_vencimento"];
-    $data_compra = $_GET["data_compra"];
     $cod_cliente = $_GET["cod_cliente"];
     $status = $_GET["status"];
 
     $data = date("Y-m-d");
 
-    $dados = editarPromissoria($codigo, $valor, $descricao, $data_compra, $data_vencimento, $cod_cliente, $status);
+    $dados = editarPromissoria($codigo, $valor, $descricao, $cod_cliente, $status);
 
     if ($dados == 1){
         $_SESSION['texto_sucesso'] = 'Os dados da promissória foram alterados no sistema.';
