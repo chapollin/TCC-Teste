@@ -72,7 +72,7 @@ function listaPromissoriaNaoPagas() {
     $query = $conexao->prepare("SELECT promissoria.cod, promissoria.descricao, promissoria.valor, promissoria.data_vencimento, cliente.nome AS cliente_nome
               FROM promissoria
               INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
-              WHERE promissoria.status IS NULL OR promissoria.status = 2"); // Filtra as promissórias com status "Não Pago"
+              WHERE promissoria.status IS NULL OR promissoria.status = 2");
     $query->execute();
     $lista = $query->fetchAll(PDO::FETCH_ASSOC);
     return $lista;
@@ -83,7 +83,7 @@ function listaPromissoriaPagas() {
     $query = $conexao->prepare("SELECT promissoria.cod, promissoria.descricao, promissoria.valor, promissoria.data_vencimento, cliente.nome AS cliente_nome
               FROM promissoria
               INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
-              WHERE promissoria.status IS NULL OR promissoria.status = 1"); // Filtra as promissórias com status "Não Pago"
+              WHERE promissoria.status IS NULL OR promissoria.status = 1");
     $query->execute();
     $lista = $query->fetchAll(PDO::FETCH_ASSOC);
     return $lista;
@@ -94,7 +94,7 @@ function listaPromissoriaVencidas() {
     $query = $conexao->prepare("SELECT promissoria.cod, promissoria.descricao, promissoria.valor, promissoria.data_vencimento, cliente.nome AS cliente_nome
               FROM promissoria
               INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
-              WHERE promissoria.status IS NULL OR promissoria.status = "); // Filtra as promissórias com status "Não Pago"
+              WHERE promissoria.status IS NULL OR promissoria.status = 3");
     $query->execute();
     $lista = $query->fetchAll(PDO::FETCH_ASSOC);
     return $lista;
