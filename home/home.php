@@ -55,7 +55,7 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                             Promissórias Vencidas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                               <?php
-                                echo count($promissoriasPagas);
+                                echo count($promissoriasVencidas);
                             ?>  
                             </div>
                         </div>
@@ -76,7 +76,7 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                             Promissórias Pagas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php
-                                echo count($promissoriasVencidas);
+                                echo count($promissoriasPagas);
                             ?>  
                             </div>
                         </div>

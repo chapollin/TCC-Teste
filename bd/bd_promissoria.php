@@ -100,5 +100,16 @@ function listaPromissoriaVencidas() {
     return $lista;
 }
 
+function listaPromissoriaPagas1() {
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("SELECT promissoria.cod, cliente.nome, promissoria.descricao, promissoria.valor, promissoria.data_vencimento, promissoria.status
+              FROM promissoria
+              INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
+              WHERE promissoria.status = 1");
+    $query->execute();
+    $lista = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $lista;
+}
+
 
 ?>
