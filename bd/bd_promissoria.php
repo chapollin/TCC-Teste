@@ -111,5 +111,27 @@ function listaPromissoriaPagas1() {
     return $lista;
 }
 
+function listaPromissoriaVencidas1() {
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("SELECT promissoria.cod, cliente.nome, promissoria.descricao, promissoria.valor, promissoria.data_vencimento, promissoria.status
+              FROM promissoria
+              INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
+              WHERE promissoria.status = 3");
+    $query->execute();
+    $lista = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $lista;
+}
+
+function listaPromissoriaNaoPagas1() {
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("SELECT promissoria.cod, cliente.nome, promissoria.descricao, promissoria.valor, promissoria.data_vencimento, promissoria.status
+              FROM promissoria
+              INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
+              WHERE promissoria.status = 2");
+    $query->execute();
+    $lista = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $lista;
+}
+
 
 ?>

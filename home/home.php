@@ -32,11 +32,9 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Promissórias Não Pagas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php
-                                // Exiba o número de promissórias não pagas
-                                echo count($promissoriasNaoPagas);
-                                ?>
-                            </div>
+                            <a href="../promissoria/promissorias_nao_pagas.php">
+                                <?php echo count($promissoriasNaoPagas); ?></a>
+                        </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -54,10 +52,9 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Promissórias Vencidas</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                              <?php
-                                echo count($promissoriasVencidas);
-                            ?>  
-                            </div>
+                            <a href="../promissoria/promissorias_vencidas.php">
+                                <?php echo count($promissoriasVencidas); ?></a>
+                        </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
@@ -71,15 +68,15 @@ $promissoriasVencidas = listaPromissoriaVencidas();
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Promissórias Pagas</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php
-                                echo count($promissoriasPagas);
-                            ?>  
-                            </div>
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Promissórias Pagas
                         </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <a href="../promissoria/promissorias_pagas.php">
+                                <?php echo count($promissoriasPagas); ?></a>
+                        </div>
+                    </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
