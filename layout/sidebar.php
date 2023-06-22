@@ -19,7 +19,7 @@
            <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
             <a class="nav-link" href="../usuario/usuario.php">
-                <i class="fa fa-user-circle" style="font-size: 20px;"></i>
+                <i class="fa fa-fw fa-user-circle" style="font-size: 20px;"></i>
                 <span>Usuários</span></a>
             </li>
 
