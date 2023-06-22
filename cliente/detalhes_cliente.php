@@ -42,8 +42,11 @@ $promissorias = listaPromissoriaCliente($codCliente);
                             <th>Valor</th>
                             <th>Data da compra</th>
                             <th>Data de vencimento</th>
+                            <th>Atualizar</th>
+                            <th>excluir</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                         <?php foreach ($promissorias as $promissoria): ?>
                             <tr>
@@ -51,14 +54,20 @@ $promissorias = listaPromissoriaCliente($codCliente);
                                 <td><?= formatarDinheiro($promissoria['valor']) ?></td>
                                 <td><?= date('d/m/Y', strtotime($promissoria['data_compra'])) ?></td>
                                 <td><?= date('d/m/Y', strtotime($promissoria['data_vencimento'])) ?></td>
+                                    <td class="text-center"> 
+                                        <a title="Atualizar" href="editar_promissoria.php?cod=<?=$dados['cod']; ?>" class="btn btn-sm btn-success"><i class="fas fa-edit">&nbsp;</i>Atualizar</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a title="Excluir" href="javascript:void(0)" data-toggle="modal" data-target="#excluir-<?=$dados['cod'];?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt">&nbsp;</i>Excluir</a>
+                                    </td> 
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                     <div class="col-md-4 card_button_title">
                         <a title="Adicionar nova ordem" href="../promissoria/cad_promissoria.php?cod=<?=$dados['']; ?>"><button type="button" class="btn btn-primary btn-sm card_button_title" data-toggle="modal" id=" "> <i class="fas fa-fw fa-clipboard-list">&nbsp;</i> Adicionar Serviço/Produto</button></a>
-                    </div>
+                    </div>                    
                 </table>
-            </div>
+            </div>            
         <?php else: ?>
         
             <p>Não há promissórias para exibir.</p>
