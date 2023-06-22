@@ -37,7 +37,8 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                         </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                         </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                            <i class="fas fa-hourglass-end fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -78,7 +79,7 @@ $promissoriasVencidas = listaPromissoriaVencidas();
                         </div>
                     </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>

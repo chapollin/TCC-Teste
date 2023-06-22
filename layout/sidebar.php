@@ -19,7 +19,7 @@
            <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
             <a class="nav-link" href="../usuario/usuario.php">
-                <i class="fa fa-user-circle"></i>
+                <i class="fa fa-user-circle" style="font-size: 20px;"></i>
                 <span>Usuários</span></a>
             </li>
 
@@ -28,7 +28,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="../cliente/cliente.php">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-user" style="font-size: 20px;"></i>
                     <span>Clientes</span></a>
                 </li>
 
@@ -37,7 +37,7 @@
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
                     <a class="nav-link" href="../promissoria/promissoria.php">
-                        <i class="fas fa-fw fa-wrench"></i>
+                        <i class="fas fa-fw fa-file-invoice-dollar" style="font-size: 20px;"></i>
                         <span>Promissórias</span></a>
                     </li>
                     
@@ -46,7 +46,7 @@
                     <!-- Nav Item - Dashboard -->
                     <li class="nav-item active">
                         <a class="nav-link" href="../promissoria/cad_promissoria.php">
-                            <i class="fas fa-fw fa-clipboard-list"></i>
+                            <i class="fas fa-fw fa-clipboard-list" style="font-size: 20px;"></i>                        
                             <span>Gerar Promissórias</span></a>
                         </li>
                         
