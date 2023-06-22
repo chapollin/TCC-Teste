@@ -55,17 +55,33 @@ $promissorias = listaPromissoriaCliente($codCliente);
                                 <td><?= date('d/m/Y', strtotime($promissoria['data_compra'])) ?></td>
                                 <td><?= date('d/m/Y', strtotime($promissoria['data_vencimento'])) ?></td>
                                     <td class="text-center"> 
-                                        <a title="Atualizar" href="editar_promissoria.php?cod=<?=$dados['cod']; ?>" class="btn btn-sm btn-success"><i class="fas fa-edit">&nbsp;</i>Atualizar</a>
+                                        <a title="Atualizar" href="../promissoria/editar_promissoria.php?cod=<?=$promissoria['cod']; ?>" class="btn btn-sm btn-success"><i class="fas fa-edit">&nbsp;</i>Atualizar</a>
                                     </td>
                                     <td class="text-center">
-                                        <a title="Excluir" href="javascript:void(0)" data-toggle="modal" data-target="#excluir-<?=$dados['cod'];?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt">&nbsp;</i>Excluir</a>
+                                        <a title="Excluir" href="javascript:void(0)" data-toggle="modal" data-target="#excluir-<?=$promissoria['cod'];?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt">&nbsp;</i>Excluir</a>
                                     </td> 
+                                    <div class="modal fade" id="excluir-<?=$promissoria['cod'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Excluir Promissoria</h5>
+                                            </div>
+                                            <div class="modal-body">Deseja realmente excluir esta informação?</div>
+                                            <div class="modal-footer">
+                                             <a href="remove_promissoria1.php?cod=<?=$promissoria['cod'];?>"><button class="btn btn-primary btn-user" type="button">Confirmar</button></a>
+                                             <a href="ordem.php"><button class="btn btn-danger btn-user" type="button">Cancelar</button></a>
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                     <div class="col-md-4 card_button_title">
-                        <a title="Adicionar nova ordem" href="../promissoria/cad_promissoria.php?cod=<?=$dados['']; ?>"><button type="button" class="btn btn-primary btn-sm card_button_title" data-toggle="modal" id=" "> <i class="fas fa-fw fa-clipboard-list">&nbsp;</i> Adicionar Serviço/Produto</button></a>
-                    </div>                    
+                        <a title="Adicionar nova ordem" href="cad_promissoria1.php"><button type="button" class="btn btn-primary btn-sm card_button_title" data-toggle="modal" id=" "> <i class="fas fa-fw fa-clipboard-list">&nbsp;</i> Adicionar Promissória</button></a>
+
+                    </div>                   
                 </table>
             </div>            
         <?php else: ?>
