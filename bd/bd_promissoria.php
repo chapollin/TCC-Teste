@@ -13,12 +13,17 @@ function listaPromissoria() {
 }
 function listaPromissoriaCliente($codigoCliente) {
     $conexao = conecta_bd();
-    $query = $conexao->prepare("SELECT promissoria.cod, cliente.nome, promissoria.descricao, promissoria.valor, promissoria.data_compra, promissoria.data_vencimento FROM promissoria, cliente WHERE promissoria.cod_cliente = cliente.cod AND cliente.cod = :codigo;");
+    $query = $conexao->prepare("SELECT promissoria.cod, cliente.nome, promissoria.descricao, promissoria.valor, promissoria.data_compra, promissoria.data_vencimento, status.nome AS status
+              FROM promissoria
+              INNER JOIN cliente ON promissoria.cod_cliente = cliente.cod
+              LEFT JOIN status ON promissoria.status = status.id
+              WHERE cliente.cod = :codigo");
     $query->bindParam(":codigo", $codigoCliente);
     $query->execute();
     $lista = $query->fetchAll(PDO::FETCH_ASSOC);
     return $lista;
 }
+
 
 function cadastraPromissoria($valor, $descricao, $cod_cliente) {
     $conexao = conecta_bd();
