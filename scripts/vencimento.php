@@ -37,15 +37,15 @@ try {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'marcos.cardos@alunos.ifsuldeminas.edu.br';
-            $mail->Password   = 'mmeqrnykggjhawfe';
+            $mail->Username   = 'inadimanager@gmail.com';
+            $mail->Password   = 'oyyjrowwkxamorpm';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
             $mail->CharSet = 'UTF-8';
 
             // Conteúdo do email
             $mail->isHTML(true);
-            $mail->setFrom('marcos.cardoso@alunos.ifsuldeminas.edu.br', 'Inadimanager');
+            $mail->setFrom('inadimanager@gmail.com', 'Inadimanager');
             $mail->addAddress($row['email_cliente']);
 
             $subject = 'Promissória em Atraso';
