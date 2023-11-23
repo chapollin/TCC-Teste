@@ -50,19 +50,20 @@ function buscaPromissoria($cod_promissoria){
     $promissoria = $query->fetch(PDO::FETCH_ASSOC);
     return $promissoria;
 }
-
-function editarPromissoria($codigo, $valor, $descricao, $cod_cliente, $status)
+function editarPromissoria($codigo, $valor, $descricao, $cod_cliente, $status, $data_vencimento)
 {
     $conexao = conecta_bd();
-    $query = $conexao->prepare("UPDATE promissoria SET cod_cliente = :cod_cliente, descricao = :descricao, valor = :valor, status = :status WHERE cod = :cod");
+    $query = $conexao->prepare("UPDATE promissoria SET cod_cliente = :cod_cliente, descricao = :descricao, valor = :valor, status = :status, data_vencimento = :data_vencimento WHERE cod = :cod");
     $query->bindParam(':cod', $codigo, PDO::PARAM_INT);
     $query->bindParam(':cod_cliente', $cod_cliente, PDO::PARAM_INT);
     $query->bindParam(':descricao', $descricao, PDO::PARAM_STR);
     $query->bindParam(':valor', $valor, PDO::PARAM_STR);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
+    $query->bindParam(':data_vencimento', $data_vencimento, PDO::PARAM_STR);
     $query->execute();
     return $query->rowCount();
 }
+
 
 function removerPromissora($codigo){
     $conexao = conecta_bd();

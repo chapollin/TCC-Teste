@@ -8,10 +8,11 @@ if (isset($_GET["cod"]) && isset($_GET["descricao"]) && isset($_GET["valor"]) &&
     $valor = $_GET["valor"];
     $cod_cliente = $_GET["cod_cliente"];
     $status = $_GET["status"];
+    $data_vencimento = $_GET["data_vencimento"];
 
-    $data = date("Y-m-d");
+    // $data = date("Y-m-d");
 
-    $dados = editarPromissoria($codigo, $valor, $descricao, $cod_cliente, $status);
+    $dados = editarPromissoria($codigo, $valor, $descricao, $cod_cliente, $status, $data_vencimento,);
 
     if ($dados == 1){
         $_SESSION['texto_sucesso'] = 'Os dados da promissória foram alterados no sistema.';

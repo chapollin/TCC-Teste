@@ -1,25 +1,6 @@
--- --------------------------------------------------------
--- Servidor:                     127.0.0.1
--- Versão do servidor:           10.4.28-MariaDB - mariadb.org binary distribution
--- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.4.0.6659
--- --------------------------------------------------------
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
--- Copiando estrutura do banco de dados para inadimanager
-CREATE DATABASE IF NOT EXISTS `inadimanager` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE DATABASE IF NOT EXISTS `inadimanager`/;
 USE `inadimanager`;
 
--- Copiando estrutura para evento inadimanager.atualizar_status_promissoria
 DELIMITER //
 CREATE EVENT `atualizar_status_promissoria` ON SCHEDULE EVERY 1 DAY STARTS '2023-06-01 08:03:36' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
     UPDATE promissoria
@@ -29,7 +10,6 @@ CREATE EVENT `atualizar_status_promissoria` ON SCHEDULE EVERY 1 DAY STARTS '2023
 END//
 DELIMITER ;
 
--- Copiando estrutura para tabela inadimanager.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
   `cod` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -41,16 +21,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `cidade` varchar(100) NOT NULL,
   `telefone` varchar(100) NOT NULL,
   PRIMARY KEY (`cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela inadimanager.cliente: ~2 rows (aproximadamente)
 INSERT INTO `cliente` (`cod`, `nome`, `cpf`, `email`, `endereco`, `numero`, `bairro`, `cidade`, `telefone`) VALUES
-	(6, 'jose', '88888888888', 'jose@jose', 'joseruadzfgjhzdfjhfdgjfgjghdkgfhkhjkljçkjlç', '16', 'mjknkm', 'tiagolandia', '(35) 88888-8888'),
-	(7, 'tiago', '12345678998', 'afasfsf@gfdgdfg.com', 'tiagorua', '5', 'tiagobairro', 'tiagolandia', '(35) 88888-8888'),
-	(18, 'Marcos Daniel ', '79865212532', 'm1@gmail.com', 'marcos isso mesmo', '80', 'marcobairro', 'marcoslovakia', '(35) 99874-4566'),
-	(19, 'TESTE', '11111111111', 'TESTE@TESTE', 'TESTE', '9', 'TESTO', 'TESTOLANDIA', '(11) 11111-1111');
+	(20, 'Marcos Daniel ', '12312312312', 'marcos@vomoto.com', '.', '5', '.', '.', '(35) 99965-6565'),
+	(21, 'Kleber Moreira', '12312312365', 'kleber@vomoto.com', '.', '1', '.', '.', '(35) 99925-1412'),
+	(22, 'Marcos Cardoso', '11111111111', 'danielsinho487@gmail.com', 'sd', '60', 'sdf', 'Machado', '(25) 25252-5252'),
+	(23, 'Teste', '123.123.123.88', 'TESTE@TESTE', 't', '60', 't', 'Machado', '(25) 25252-5252');
 
--- Copiando estrutura para tabela inadimanager.promissoria
 CREATE TABLE IF NOT EXISTS `promissoria` (
   `cod` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(200) NOT NULL,
@@ -64,50 +42,35 @@ CREATE TABLE IF NOT EXISTS `promissoria` (
   KEY `fk_status_promissoria` (`status`),
   CONSTRAINT `fk_divida_cliente` FOREIGN KEY (`cod_cliente`) REFERENCES `cliente` (`cod`) ON DELETE CASCADE,
   CONSTRAINT `fk_status_promissoria` FOREIGN KEY (`status`) REFERENCES `status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela inadimanager.promissoria: ~9 rows (aproximadamente)
 INSERT INTO `promissoria` (`cod`, `descricao`, `valor`, `data_compra`, `data_vencimento`, `cod_cliente`, `status`) VALUES
-	(3, 'lknçnlk', 5345, '2023-06-01', '2023-07-01', 6, 1),
-	(7, 'carro', 90000, '2023-06-01', '2023-07-01', 7, 1),
-	(8, 'calota', 8, '2023-06-01', '2023-07-01', 7, 3),
-	(9, 'roda', 847651, '2023-06-01', '2023-07-01', 7, 3),
-	(11, 'TESTE3', 78, '2023-06-21', '2023-07-21', 6, 2),
-	(12, 'roda', 80, '2023-06-21', '2023-07-21', 18, 2),
-	(13, 'TESTE3', 98, '2023-06-21', '2023-07-21', 18, 1),
-	(14, 'TESTE1000', 100, '2023-06-25', '2023-07-25', 18, 2),
-	(15, 'trocou o pneu', 500, '2023-06-26', '2023-07-26', 19, 3),
-	(16, 'nota', 5000, '2023-06-28', '2023-07-28', 18, 2);
+	(22, 'Pneu', 400, '2023-10-10', '2023-11-10', 20, 3),
+	(24, 'carro', 25000, '2023-11-12', '2023-12-14', 22, 1),
+	(25, 'roda', 200, '2023-11-14', '2023-12-14', 23, 2),
+	(26, 'Balancemento', 100, '2023-11-14', '2023-12-14', 23, 2);
 
--- Copiando estrutura para tabela inadimanager.status
 CREATE TABLE IF NOT EXISTS `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela inadimanager.status: ~3 rows (aproximadamente)
 INSERT INTO `status` (`id`, `nome`) VALUES
 	(1, 'Pago'),
 	(2, 'Não Pago'),
 	(3, 'Vencido');
 
--- Copiando estrutura para tabela inadimanager.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
   `cod` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL,
   PRIMARY KEY (`cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela inadimanager.usuario: ~2 rows (aproximadamente)
 INSERT INTO `usuario` (`cod`, `nome`, `email`, `senha`) VALUES
 	(1, 'marcos', 'm@m', '6f8f57715090da2632453988d9a1501b'),
-	(2, 'Antonio', 'a@a', '0cc175b9c0f1b6a831c399e269772661');
-
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+	(2, 'Antonio', 'a@a', '0cc175b9c0f1b6a831c399e269772661'),
+	(3, 'teste', 'teste@teste', 'e358efa489f58062f10dd7316b65649e'),
+	(4, 'Fabio', 'f@f', '');
