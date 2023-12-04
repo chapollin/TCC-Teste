@@ -23,32 +23,31 @@ function listaClienteOrdemAlfabetica(){
     return $lista;
 }
 
-function editarPerfilCliente($codigo,$nome, $cpf, $email,$endereco,$numero,$bairro,$cidade,$telefone){
-  $conexao = conecta_bd();
+function editarPerfilCliente($codigo, $nome, $cpf, $email, $endereco, $numero, $bairro, $cidade, $telefone) {
+    $conexao = conecta_bd();
 
-  $query = $conexao->prepare("SELECT * FROM cliente WHERE cod = ?");
-  $query->bindParam(1,$codigo);
-  $query->execute();
-  $retorno = $query->fetch(PDO::FETCH_ASSOC);
-  if(count($retorno) > 0){
-      $query = $conexao->prepare("UPDATE cliente SET nome = ?, email = ?,endereco = ?,numero =?, bairro = ?,cidade = ?, telefone = ?, WHERE cod = ?");
-      $query->bindParam(1, $nome);
-      $query->bindParam(2, $cpf);
-      $query->bindParam(3, $email);
-      $query->bindParam(5, $endereco);
-      $query->bindParam(6, $numero);
-      $query->bindParam(7, $bairro);
-      $query->bindParam(8, $cidade);
-      $query->bindParam(9, $telefone);
-      $query->bindParam(10, $codigo);
-      $retorno = $query->execute();//retorno boolean padrao TRUE
-      if($retorno){
-          return 1;
-      } else{
-          return 0;
-      }        
-  }
-
+    $query = $conexao->prepare("SELECT * FROM cliente WHERE cod = ?");
+    $query->bindParam(1, $codigo);
+    $query->execute();
+    $retorno = $query->fetch(PDO::FETCH_ASSOC);
+    if (count($retorno) > 0) {
+        $query = $conexao->prepare("UPDATE cliente SET nome = ?, cpf = ?, email = ?, endereco = ?, numero = ?, bairro = ?, cidade = ?, telefone = ? WHERE cod = ?");
+        $query->bindParam(1, $nome);
+        $query->bindParam(2, $cpf);
+        $query->bindParam(3, $email);
+        $query->bindParam(4, $endereco);
+        $query->bindParam(5, $numero);
+        $query->bindParam(6, $bairro);
+        $query->bindParam(7, $cidade);
+        $query->bindParam(8, $telefone);
+        $query->bindParam(9, $codigo);
+        $retorno = $query->execute(); // retorno boolean padrão TRUE
+        if ($retorno) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
 function cadastraCliente($nome, $cpf,  $email, $endereco, $numero, $bairro, $cidade, $telefone) {
     $conexao = conecta_bd();
@@ -93,29 +92,30 @@ function removeCliente($codigo){
     $query->execute();
     return $query->rowCount();
 }
-function editarCliente($codigo,$nome,$email,$endereco,$numero,$bairro,$cidade,$telefone){
-	$conexao = conecta_bd();
-  
-	$query = $conexao->prepare("SELECT * FROM cliente WHERE cod = ?");
-	$query->bindParam(1,$codigo);
-	$query->execute();
+function editarCliente($codigo, $nome, $cpf, $email, $endereco, $numero, $bairro, $cidade, $telefone) {
+    $conexao = conecta_bd();
+
+    $query = $conexao->prepare("SELECT * FROM cliente WHERE cod = ?");
+    $query->bindParam(1, $codigo);
+    $query->execute();
     $retorno = $query->fetch(PDO::FETCH_ASSOC);
-	if(count($retorno) > 0){
-		$query = $conexao->prepare("UPDATE cliente SET nome = ?, email = ?,endereco = ?,numero =?, bairro = ?,cidade = ?, telefone = ? WHERE cod = ?");
+    if (count($retorno) > 0) {
+        $query = $conexao->prepare("UPDATE cliente SET nome = ?, cpf = ?, email = ?, endereco = ?, numero = ?, bairro = ?, cidade = ?, telefone = ? WHERE cod = ?");
         $query->bindParam(1, $nome);
-		$query->bindParam(2, $email);
-		$query->bindParam(3, $endereco);
-		$query->bindParam(4, $numero);
-		$query->bindParam(5, $bairro);
-		$query->bindParam(6, $cidade);
-		$query->bindParam(7, $telefone);
-		$query->bindParam(8, $codigo);
-		$retorno = $query->execute(); //retorno boolean padrao TRUE
-		if($retorno){
-			return 1;
-		} else{
-			return 0;
-		}        
-	}
-  }
+        $query->bindParam(2, $cpf);
+        $query->bindParam(3, $email);
+        $query->bindParam(4, $endereco);
+        $query->bindParam(5, $numero);
+        $query->bindParam(6, $bairro);
+        $query->bindParam(7, $cidade);
+        $query->bindParam(8, $telefone);
+        $query->bindParam(9, $codigo);
+        $retorno = $query->execute(); // retorno boolean padrão TRUE
+        if ($retorno) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
 ?>

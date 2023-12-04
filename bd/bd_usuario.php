@@ -37,6 +37,25 @@ function editarUsuario($codigo, $nome, $email, $senha) {
     $conexao = conecta_bd();
 
     $sql = "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE cod = ?";
+    $senha = md5($senha);
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindParam(1, $nome);
+    $stmt->bindParam(2, $email);
+    $stmt->bindParam(3, $senha);
+    $stmt->bindParam(4, $codigo);
+
+    $result = $stmt->execute();
+
+    $stmt->closeCursor();
+    $conexao = null;
+
+    return $result ? 1 : 0;
+}
+function editarPerfilUsuario($codigo, $nome, $email, $senha) {
+    $conexao = conecta_bd();
+
+    $sql = "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE cod = ?";
+    $senha = md5($senha);
     $stmt = $conexao->prepare($sql);
     $stmt->bindParam(1, $nome);
     $stmt->bindParam(2, $email);

@@ -66,7 +66,13 @@ $email = $dados["email"];
                             <label> Email </label>
                             <input type="email" class="form-control form-control-user" id="email" name="email" value="<?= $email ?>" required>
                         </div>
-                    </div>                   
+                    </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label> Nova Senha </label>
+                                <input type="password" class="form-control form-control-user" id="senha" name="senha" placeholder="Digite a nova senha">
+                            </div>
+                        </div>                   
 
                     <div class="card-footer text-muted" id="btn-form">
                         <div class=text-right>
